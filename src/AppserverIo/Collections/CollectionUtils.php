@@ -11,14 +11,13 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
  */
+
 namespace AppserverIo\Collections;
 
 use AppserverIo\Lang\Object;
@@ -27,10 +26,8 @@ use AppserverIo\Lang\Object;
  * This class implements static methods that can be used
  * to work with Collections.
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
@@ -40,8 +37,6 @@ class CollectionUtils extends Object
 
     /**
      * Standardconstructor that marks this class as util class.
-     *
-     * @return void
      */
     protected function __construct()
     {
@@ -54,13 +49,13 @@ class CollectionUtils extends Object
      * If the evaluate method returns false, the object is removed from the passed
      * IndexedCollection.
      *
-     * @param \AppserverIo\Collections\Collection $collection Holds the IndexedCollection that should be filtered
-     * @param \AppserverIo\Collections\Predicate  $predicate  The Predicate that should be used for evaluation purposes
-     * @param integer                             $iterations Holds the size of successfull interations, after that the filter should run
+     * @param \AppserverIo\Collections\CollectionInterface $collection Holds the IndexedCollection that should be filtered
+     * @param \AppserverIo\Collections\PredicateInterface  $predicate  The Predicate that should be used for evaluation purposes
+     * @param integer                                      $iterations Holds the size of successful iterations, after that the filter should run
      *
      * @return void
      */
-    public static function filter(Collection $collection, Predicate $predicate, $iterations = 0)
+    public static function filter(CollectionInterface $collection, PredicateInterface $predicate, $iterations = 0)
     {
         // initialize the ArrayList that should be returned
         $return = array();
@@ -94,12 +89,12 @@ class CollectionUtils extends Object
      * If no element of the collection matches the predicate, null is
      * returned.
      *
-     * @param \AppserverIo\Collections\Collection $collection The collection to search
-     * @param \AppserverIo\Collections\Predicate  $predicate  The predicate to use
+     * @param \AppserverIo\Collections\CollectionInterface $collection The collection to search
+     * @param \AppserverIo\Collections\PredicateInterface  $predicate  The predicate to use
      *
      * @return object Returns the first element of the collection which matches the predicate or null if none could be found
      */
-    public static function find(Collection $collection, Predicate $predicate)
+    public static function find(CollectionInterface $collection, PredicateInterface $predicate)
     {
         // iterate over the IndexedCollection and invoke the evaluate()
         // method of the Predicate on every object of the IndexedCollection
@@ -120,12 +115,12 @@ class CollectionUtils extends Object
      * If the evaluate method returns true the method
      * returns true also.
      *
-     * @param \AppserverIo\Collections\Collection $collection Holds the IndexedCollection that should be filtered
-     * @param \AppserverIo\Collections\Predicate  $predicate  The Predicate that should be used for evaluation purposes
+     * @param \AppserverIo\Collections\CollectionInterface $collection Holds the IndexedCollection that should be filtered
+     * @param \AppserverIo\Collections\PredicateInterface  $predicate  The Predicate that should be used for evaluation purposes
      *
      * @return boolean TRUE if the evaluate method of the Predicate returns TRUE
      */
-    public static function exists(Collection $collection, Predicate $predicate)
+    public static function exists(CollectionInterface $collection, PredicateInterface $predicate)
     {
         // iterate over the Collection and invoke the evaluate()
         // method of the Predicate on every object of the Collection
@@ -146,12 +141,12 @@ class CollectionUtils extends Object
      * If the evaluate method returns
      * true the method returns the key of the object.
      *
-     * @param \AppserverIo\Collections\Collection $collection Holds the Collection that should be filtered
-     * @param \AppserverIo\Collections\Predicate  $predicate  The Predicate that should be used for evaluation purposes
+     * @param \AppserverIo\Collections\CollectionInterface $collection Holds the Collection that should be filtered
+     * @param \AppserverIo\Collections\PredicateInterface  $predicate  The Predicate that should be used for evaluation purposes
      *
      * @return mixed Holds the key of the first object with it's evaluate() method returning TRUE
      */
-    public static function findKey(Collection $collection, Predicate $predicate)
+    public static function findKey(CollectionInterface $collection, PredicateInterface $predicate)
     {
         // iterate over the IndexedCollection and invoke the evaluate()
         // method of the Predicate on every object of the Collection
@@ -171,19 +166,19 @@ class CollectionUtils extends Object
      * element e in the returned Collection will be the cardinality of e
      * in a minus the cardinality of e in b, or zero, whichever is greater.
      *
-     * @param \AppserverIo\Collections\Collection $a The Collection to subtract from, must not be null
-     * @param \AppserverIo\Collections\Collection $b The Collection to subtract, must not be null
+     * @param \AppserverIo\Collections\CollectionInterface $a The Collection to subtract from, must not be null
+     * @param \AppserverIo\Collections\CollectionInterface $b The Collection to subtract, must not be null
      *
      * @return void
      */
-    public static function subtract(Collection $a, Collection $b)
+    public static function subtract(CollectionInterface $a, CollectionInterface $b)
     {
         // initialize the array with the value to return that should be returned
         $return = array();
-        // iterate over the Collection and check if the object exsists in
+        // iterate over the Collection and check if the object exists in
         // the second Collection
         foreach ($a as $key => $element) {
-            // if the object does not exsist in the second Collection add
+            // if the object does not exist in the second Collection add
             // it to the return array
             if ($b->exists($key)) {
                 $return[$key] = $element;
@@ -198,12 +193,12 @@ class CollectionUtils extends Object
      * This method sorts the passed collection depending
      * on the comparator.
      *
-     * @param \AppserverIo\Collections\Collection $collection Holds the Collection that should be sorted
-     * @param \AppserverIo\Collections\Comparator $comperator The Comparator that should be used for compare purposes
+     * @param \AppserverIo\Collections\CollectionInterface $collection Holds the Collection that should be sorted
+     * @param \AppserverIo\Collections\ComparatorInterface $comperator The Comparator that should be used for compare purposes
      *
      * @return void
      */
-    public static function sort(Collection $collection, Comparator $comperator)
+    public static function sort(CollectionInterface $collection, ComparatorInterface $comperator)
     {
         // initialize the ArrayList that should be returned
         // sort the ArrayList
@@ -216,14 +211,14 @@ class CollectionUtils extends Object
     /**
      * Sorts the passed array.
      *
-     * @param array                               $src        The Array to be sorted
-     * @param integer                             $low        The offset we start sorting
-     * @param integer                             $high       The number of elements to be sorted
-     * @param \AppserverIo\Collections\Comparator $comperator The comperator used for sorting
+     * @param array                                        $src        The Array to be sorted
+     * @param integer                                      $low        The offset we start sorting
+     * @param integer                                      $high       The number of elements to be sorted
+     * @param \AppserverIo\Collections\ComparatorInterface $comperator The comperator used for sorting
      *
      * @return array The sorted array
      */
-    protected static function arraySort($src, $low, $high, Comparator $comperator)
+    protected static function arraySort($src, $low, $high, ComparatorInterface $comperator)
     {
         // sort the array
         for ($i = $low; $i < $high; $i ++) {
@@ -231,7 +226,7 @@ class CollectionUtils extends Object
                 $src = CollectionUtils::swap($src, $j, $j - 1);
             }
         }
-        // return the sortet array
+        // return the sorted array
         return $src;
     }
 

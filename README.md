@@ -1,6 +1,6 @@
 # PHP collection library
 
-[![Latest Stable Version](https://poser.pugx.org/appserver-io/collections/v/stable.png)](https://packagist.org/packages/appserver-io/collections) [![Total Downloads](https://poser.pugx.org/appserver-io/collections/downloads.png)](https://packagist.org/packages/appserver-io/collections) [![Latest Unstable Version](https://poser.pugx.org/appserver-io/collections/v/unstable.png)](https://packagist.org/packages/appserver-io/collections) [![License](https://poser.pugx.org/appserver-io/collections/license.png)](https://packagist.org/packages/appserver-io/collections) [![Build Status](https://travis-ci.org/appserver-io/collections.png)](https://travis-ci.org/appserver-io/collections)[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/appserver-io/collections/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/appserver-io/collections/?branch=master)[![Code Coverage](https://scrutinizer-ci.com/g/appserver-io/collections/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/appserver-io/collections/?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/appserver-io/collections/v/stable.png)](https://packagist.org/packages/appserver-io/collections) [![Total Downloads](https://poser.pugx.org/appserver-io/collections/downloads.png)](https://packagist.org/packages/appserver-io/collections) [![License](https://poser.pugx.org/appserver-io/collections/license.png)](https://packagist.org/packages/appserver-io/collections) [![Build Status](https://travis-ci.org/appserver-io/collections.png)](https://travis-ci.org/appserver-io/collections) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/appserver-io/collections/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/appserver-io/collections/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/appserver-io/collections/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/appserver-io/collections/?branch=master)
 
 ## Introduction
 
@@ -157,5 +157,3 @@ Found item with key 2 and value 13 Found item with key 1 and value 14 Found item
 # External Links
 
 * Documentation at [appserver.io](http://docs.appserver.io)
-* Documentation on [GitHub](https://github.com/techdivision/TechDivision_AppserverDocumentation)
-* [Getting started](https://github.com/techdivision/TechDivision_AppserverDocumentation/tree/master/docs/getting-started)

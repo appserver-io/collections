@@ -1,7 +1,7 @@
 <?php
 
 /**
- * \AppserverIo\Collections\Enumeration
+ * \AppserverIo\Collections\EnumerationInterface
  *
  * NOTICE OF LICENSE
  *
@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
@@ -27,15 +25,13 @@ namespace AppserverIo\Collections;
  *
  * Successive objects are obtained by the nextElement method.
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
  */
-interface Enumeration
+interface EnumerationInterface
 {
 
     /**
@@ -48,7 +44,7 @@ interface Enumeration
     /**
      * Obtain the next element in the enumeration.
      *
-     * @return the next element in the enumeration
+     * @return mixed The next element in the enumeration
      * @throws \AppserverIo\Collections\NoSuchElementException if there are no more elements
      */
     public function nextElement();

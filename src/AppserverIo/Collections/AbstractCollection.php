@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
@@ -32,15 +30,13 @@ use AppserverIo\Lang\NullPointerException;
 /**
  * Abstract base class of the IndexedCollections.
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link      https://github.com/appserver-io/collection
+ * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
  */
-abstract class AbstractCollection extends Object implements Collection, \IteratorAggregate
+abstract class AbstractCollection extends Object implements CollectionInterface, \IteratorAggregate
 {
 
     /**
@@ -63,12 +59,12 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
     }
 
     /**
-	 * This method appends all elements of the
-	 * passed array to the Collection.
-	 *
-	 * @param array $array Holds the array with the values to add
-	 *
-	 * @return \AppserverIo\Collections\Collection The instance
+     * This method appends all elements of the
+     * passed array to the Collection.
+     *
+     * @param array $array Holds the array with the values to add
+     *
+     * @return \AppserverIo\Collections\CollectionInterface The instance
      * @see \AppserverIo\Collections\Collection::addAll($array)
      */
     public function addAll($array)
@@ -88,9 +84,9 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
      *
      * @return mixed The requested element
      * @throws \AppserverIo\Collections\InvalidKeyException Is thrown if the passed key is NOT an integer
-     * @throws \AppserverIo\Collections\NullPointerException Is thrown if the passed key OR value are NULL
+     * @throws \AppserverIo\Lang\NullPointerException Is thrown if the passed key OR value are NULL
      * @throws \AppserverIo\Collections\IndexOutOfBoundsException Is thrown if no element with the passed key exists in the Collection
-     * @see \AppserverIo\Collections\Collection::get($key)
+     * @see \AppserverIo\Collections\CollectionInterface::get($key)
      */
     public function get($key)
     {
@@ -119,7 +115,7 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
             } elseif (method_exists($key, '__toString')) {
                 $newKey = $key->__toString();
             } else {
-                throw new InvalidKeyException('Passed key has to be a primitve datatype or ' . 'has to implement the __toString() method');
+                throw new InvalidKeyException('Passed key has to be a primitive datatype or ' . 'has to implement the __toString() method');
             }
             // return the value for the passed key, if it exists
             if (array_key_exists($newKey, $this->items)) {
@@ -128,7 +124,7 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
                 throw new IndexOutOfBoundsException('Index ' . $newKey . ' out of bounds');
             }
         }
-        throw new InvalidKeyException('Passed key has to be a primitve datatype or ' . 'has to implement the __toString() method');
+        throw new InvalidKeyException('Passed key has to be a primitive datatype or ' . 'has to implement the __toString() method');
     }
 
     /**
@@ -141,8 +137,8 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
      *
      * @return boolean Returns TRUE if the element exists in the Collection else FALSE
      * @throws \AppserverIo\Collections\InvalidKeyException Is thrown if the passed key is NOT an integer
-     * @throws \AppserverIo\Collections\NullPointerException Is thrown if the passed key is NULL
-     * @see \AppserverIo\Collections\Collection::exists($key)
+     * @throws \AppserverIo\Lang\NullPointerException Is thrown if the passed key is NULL
+     * @see \AppserverIo\Collections\CollectionInterface::exists($key)
      */
     public function exists($key)
     {
@@ -167,12 +163,12 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
             } elseif (method_exists($key, '__toString')) {
                 $newKey = $key->__toString();
             } else {
-                throw new InvalidKeyException('Passed key has to be a primitve datatype or ' . 'has to implement the __toString() method');
+                throw new InvalidKeyException('Passed key has to be a primitive datatype or ' . 'has to implement the __toString() method');
             }
             // return TRUE if a value for the passed key exists, else FALSE
             return array_key_exists($newKey, $this->items);
         }
-        throw new InvalidKeyException('Passed key has to be a primitve datatype or ' . 'has to implement the __toString() method');
+        throw new InvalidKeyException('Passed key has to be a primitive datatype or ' . 'has to implement the __toString() method');
     }
 
     /**
@@ -181,7 +177,7 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
      * lost in the array.
      *
      * @return array Holds an array with the items of the Dictionary
-     * @see \AppserverIo\Collections\Collection::toArray()
+     * @see \AppserverIo\Collections\CollectionInterface::toArray()
      */
     public function toArray()
     {
@@ -192,7 +188,7 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
      * This method returns the number of entries of the Collection.
      *
      * @return integer The number of entries
-     * @see \AppserverIo\Collections\Collection::size()
+     * @see \AppserverIo\Collections\CollectionInterface::size()
      */
     public function size()
     {
@@ -201,10 +197,10 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
 
     /**
      * This method initializes the Collection and removes
-     * all exsiting entries.
+     * all existing entries.
      *
      * @return void
-     * @see \AppserverIo\Collections\Collection::clear()
+     * @see \AppserverIo\Collections\CollectionInterface::clear()
      */
     public function clear()
     {
@@ -227,15 +223,14 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
     }
 
     /**
-     * This method removes the element with the passed
-     * key, that has to be an integer, from the
-     * IndexedCollection.
+     * This method removes the element with the passed key, that has to be an integer, from the IndexedCollection.
      *
      * @param mixed $key Holds the key of the element to remove
      *
      * @return void
      * @throws \AppserverIo\Collections\InvalidKeyException Is thrown if the passed key is NOT an integer
-     * @throws \AppserverIo\Collections\NullPointerException Is thrown if the passed key is NULL
+     * @throws \AppserverIo\Lang\NullPointerException Is thrown if the passed key is NULL
+     * @throws \AppserverIo\Collections\IndexOutOfBoundsException
      */
     public function remove($key)
     {
@@ -266,7 +261,7 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
             } elseif (method_exists($key, '__toString')) {
                 $newKey = $key->__toString();
             } else {
-                throw new InvalidKeyException('Passed key has to be a primitve datatype or ' . 'has to implement the __toString() method');
+                throw new InvalidKeyException('Passed key has to be a primitive datatype or ' . 'has to implement the __toString() method');
             }
             if (array_key_exists($newKey, $this->items)) {
                 // remove the item
@@ -277,7 +272,7 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
                 throw new IndexOutOfBoundsException('Index ' . $newKey . ' out of bounds');
             }
         }
-        throw new InvalidKeyException('Passed key has to be a primitve datatype or ' . 'has to implement the __toString() method');
+        throw new InvalidKeyException('Passed key has to be a primitive datatype or ' . 'has to implement the __toString() method');
     }
 
     /**
@@ -287,12 +282,12 @@ abstract class AbstractCollection extends Object implements Collection, \Iterato
      * If the keys are equal, the existing value is taken, else
      * the new one is appended.
      *
-     * @param \AppserverIo\Collections\Collection $col Holds the Collection with the values to merge
+     * @param \AppserverIo\Collections\CollectionInterface $col Holds the Collection with the values to merge
      *
      * @return void
      * @deprecated Does not work correctly
      */
-    public function merge(Collection $col)
+    public function merge(CollectionInterface $col)
     {
         // union the items of the two maps
         $this->items = $this->items + $col->toArray();

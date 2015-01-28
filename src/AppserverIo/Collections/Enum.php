@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
@@ -29,15 +27,13 @@ use AppserverIo\Lang\Object;
  *
  * Successive  objects are obtained by the nextElement method.
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
  */
-class Enum extends Object implements Enumeration
+class Enum extends Object implements EnumerationInterface
 {
 
     /**
@@ -55,12 +51,10 @@ class Enum extends Object implements Enumeration
     protected $itemPointer = 0;
 
     /**
-     * Standardconstructor that adds the array passed
-     * as parameter to the internal membervariable.
+     * Standard constructor that adds the array passed
+     * as parameter to the internal member variable.
      *
      * @param array $items An array to initialize the Enumeration
-     *
-     * @return void
      */
     public function __construct($items = array())
     {
@@ -85,9 +79,9 @@ class Enum extends Object implements Enumeration
     /**
      * Obtain the next element in the enumeration.
      *
-     * @return the next element in the enumeration
+     * @return mixed The next element in the enumeration
      * @throws \AppserverIo\Collections\NoSuchElementException if there are no more elements
-     * @see \AppserverIo\Collections\Enumeration::nextElement()
+     * @see \AppserverIo\Collections\EnumerationInterface::nextElement()
      */
     public function nextElement()
     {
