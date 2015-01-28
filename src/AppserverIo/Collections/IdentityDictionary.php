@@ -11,14 +11,13 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
  */
+
 namespace AppserverIo\Collections;
 
 use AppserverIo\Lang\NullPointerException;
@@ -29,10 +28,8 @@ use AppserverIo\Lang\NullPointerException;
  * A dictionary uses objects as keys instead of integers
  * like a HashMap.
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
@@ -51,7 +48,6 @@ class IdentityDictionary extends Dictionary
      * @throws \AppserverIo\Collections\InvalidKeyException Is thrown if the passed key is NOT an object
      * @throws \AppserverIo\Lang\NullPointerException Is thrown if the passed key OR value are NULL
      * @throws \AppserverIo\Collections\IndexOutOfBoundsException Is thrown if no element with the passed key exists in the Dictionary
-     * @see \AppserverIo\Collections\IndexedCollection::get($key)
      */
     public function get($key)
     {
@@ -85,7 +81,6 @@ class IdentityDictionary extends Dictionary
      * @return boolean Returns TRUE if an element with the passed key exists in the Dictionary
      * @throws \AppserverIo\Collections\InvalidKeyException Is thrown if the passed key is NOT an object
      * @throws \AppserverIo\Lang\NullPointerException Is thrown if the passed key is NULL
-     * @see \AppserverIo\Collections\IndexedCollection::exists($key)
      */
     public function exists($key)
     {

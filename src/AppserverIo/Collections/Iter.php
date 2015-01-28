@@ -11,14 +11,13 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
  */
+
 namespace AppserverIo\Collections;
 
 use AppserverIo\Lang\Object;
@@ -27,10 +26,8 @@ use AppserverIo\Lang\Object;
  * This class is the default implementation of a Iterator
  * used for foreach constructs.
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
@@ -50,8 +47,6 @@ class Iter extends Object implements \Iterator
      * with the array passed as parameter.
      *
      * @param array $array Holds the array
-     *
-     * @return void
      */
     public function __construct($array)
     {
@@ -64,7 +59,7 @@ class Iter extends Object implements \Iterator
      * Resets the internal array pointer to
      * the first entry.
      *
-     * And retures the value therefore.
+     * And returns the value therefore.
      *
      * @return mixed Holds the first value of the internal array
      */

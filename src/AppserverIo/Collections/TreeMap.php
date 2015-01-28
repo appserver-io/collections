@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
@@ -32,38 +30,35 @@ use AppserverIo\Lang\NullPointerException;
 /**
  * This class is the implementation of a sorted HashMap.
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
  */
-class TreeMap extends AbstractMap implements SortedMap
+class TreeMap extends AbstractMap implements SortedMapInterface
 {
 
     /**
      * Holds the comparator to sort the internal array.
      *
-     * @var \AppserverIo\Collections\Comparator
+     * @var \AppserverIo\Collections\ComparatorInterface
      */
     protected $comparator = null;
 
     /**
-     * Standardconstructor that adds the array passed
-     * as parameter to the internal membervariable.
+     * Standard constructor that adds the array passed
+     * as parameter to the internal member variable.
      *
      * Be careful when using a comparator, because sorting
      * a large map can take much processor time and memory.
      *
-     * @param \AppserverIo\Collections\Comparator $comparator Holds the comparator to use
-     * @param array                               $items      An array to initialize the TreeMap
+     * @param \AppserverIo\Collections\ComparatorInterface $comparator Holds the comparator to use
+     * @param array                                        $items      An array to initialize the TreeMap
      *
-     * @return void
      * @throws \AppserverIo\Lang\ClassCastException Is thrown if the parameter items is not of type array
      */
-    public function __construct(Comparator $comparator = null, $items = array())
+    public function __construct(ComparatorInterface $comparator = null, $items = array())
     {
         // set the comparator
         $this->comparator = $comparator;
@@ -91,7 +86,7 @@ class TreeMap extends AbstractMap implements SortedMap
      * @param mixed $object The object to add to the TreeMap
      *
      * @return \AppserverIo\Collections\TreeMap
-     * @throws \AppserverIo\Collections\InvalidKeyException Is thrown if the passed key is NOT an primitve datatype
+     * @throws \AppserverIo\Collections\InvalidKeyException Is thrown if the passed key is NOT an primitive datatype
      * @throws \AppserverIo\Lang\NullPointerException Is thrown if the passed key is null or not a flat datatype like Integer, String, Double or Boolean
      */
     public function add($key, $object)
@@ -121,7 +116,7 @@ class TreeMap extends AbstractMap implements SortedMap
             } elseif (method_exists($key, '__toString')) {
                 $newKey = $key->__toString();
             } else {
-                throw new InvalidKeyException('Passed key has to be a primitve datatype or has to implement the __toString() method');
+                throw new InvalidKeyException('Passed key has to be a primitive datatype or has to implement the __toString() method');
             }
             // add the passed object to the internal array
             $this->items[$newKey] = $object;
@@ -130,14 +125,14 @@ class TreeMap extends AbstractMap implements SortedMap
             // return the instance
             return $this;
         }
-        throw new InvalidKeyException('Passed key has to be a primitve datatype or has to implement the __toString() method');
+        throw new InvalidKeyException('Passed key has to be a primitive datatype or has to implement the __toString() method');
     }
 
     /**
      * Sorts the instance with the given comparator
-     * or the PHP ksort() funktion.
+     * or the PHP ksort() function.
      *
-     * @return boolean Returns TRUE if the instance was sorted successfully
+     * @return boolean|null Returns TRUE if the instance was sorted successfully
      */
     protected function sort()
     {
@@ -166,14 +161,14 @@ class TreeMap extends AbstractMap implements SortedMap
             return new TreeMap(null, $array);
         }
         // throw an exception if the passed object is not an array
-        throw ClassCastException('Passed object is not an array');
+        throw new ClassCastException('Passed object is not an array');
     }
 
     /**
      * This method returns the comparator passed
      * with the constructor.
      *
-     * @return \AppserverIo\Collections\Comparator Holds the comparator passed with the constructor
+     * @return \AppserverIo\Collections\ComparatorInterface Holds the comparator passed with the constructor
      * @see \AppserverIo\Collections\SortedMap::comparator()
      */
     public function comparator()

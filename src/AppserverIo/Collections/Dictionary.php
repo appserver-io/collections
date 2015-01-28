@@ -11,14 +11,13 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
  */
+
 namespace AppserverIo\Collections;
 
 use AppserverIo\Lang\Object;
@@ -31,15 +30,13 @@ use AppserverIo\Lang\NullPointerException;
  * A dictionary uses objects as keys instead of integers
  * like a HashMap.
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
  */
-class Dictionary extends Object implements Set
+class Dictionary extends Object implements SetInterface
 {
 
     /**
@@ -64,12 +61,11 @@ class Dictionary extends Object implements Set
     protected $key = 0;
 
     /**
-     * Standardconstructor that adds the values of the array passed
-     * as parameter to the internal membervariable.
+     * Standard constructor that adds the values of the array passed
+     * as parameter to the internal member variable.
      *
      * @param array $items An array to initialize the Dictionary
      *
-     * @return void
      * @throws \AppserverIo\Lang\ClassCastException Is thrown if nor NULL or an object that is not a Dictionary is passed
      * @see \AppserverIo\Collections\Dictionary::add($key, $value)
      */
@@ -131,10 +127,9 @@ class Dictionary extends Object implements Set
      * @param object $key Holds the key of the element to return
      *
      * @return mixed The requested element
-     * @throws \AppserverIo\Lang\InvalidKeyException Is thrown if the passed key is NOT an object
+     * @throws \AppserverIo\Collections\InvalidKeyException Is thrown if the passed key is NOT an object
      * @throws \AppserverIo\Lang\NullPointerException Is thrown if the passed key OR value are NULL
      * @throws \AppserverIo\Collections\IndexOutOfBoundsException Is thrown if no element with the passed key exists in the Dictionary
-     * @see \AppserverIo\Collections\IndexedCollection::get($key)
      */
     public function get($key)
     {
@@ -149,7 +144,7 @@ class Dictionary extends Object implements Set
             // if the actual is equal to the passed key ..
             if ($key == $value) {
                 // return the item with the passed key
-                if (arraykey_exists($id, $this->items)) {
+                if (array_key_exists($id, $this->items)) {
                     return $this->items[$id];
                 }
             }
@@ -160,14 +155,14 @@ class Dictionary extends Object implements Set
 
     /**
      * This method initializes the Collection and removes
-     * all exsiting entries.
+     * all exiting entries.
      *
      * @return void
-     * @see \AppserverIo\Collections\Collection::clear()
+     * @see \AppserverIo\Collections\CollectionInterface::clear()
      */
     public function clear()
     {
-        // intialize the internal arrays and keys
+        // initialize the internal arrays and keys
         $this->keys = array();
         $this->items = array();
         $this->key = 0;
@@ -177,7 +172,6 @@ class Dictionary extends Object implements Set
      * This method returns the number of entries of the Collection.
      *
      * @return integer The number of entries
-     * @see \AppserverIo\Collections\InterfacesCollection::size()
      */
     public function size()
     {
@@ -193,7 +187,6 @@ class Dictionary extends Object implements Set
      * @return boolean Returns true if an element with the passed key exists in the Dictionary
      * @throws \AppserverIo\Collections\InvalidKeyException Is thrown if the passed key is NOT an object
      * @throws \AppserverIo\Lang\NullPointerException Is thrown if the passed key is NULL
-     * @see \AppserverIo\Collections\IndexedCollection::exists($key)
      */
     public function exists($key)
     {
@@ -220,7 +213,7 @@ class Dictionary extends Object implements Set
      * entries, otherwise false.
      *
      * @return boolean
-     * @see \AppserverIo\Collections\Collection::isEmpty()
+     * @see \AppserverIo\Collections\CollectionInterface::isEmpty()
      */
     public function isEmpty()
     {
@@ -238,7 +231,7 @@ class Dictionary extends Object implements Set
      * The keys are lost in the array.
      *
      * @return array Holds an array with the items of the Dictionary
-     * @see \AppserverIo\Collections\Collection::toArray()
+     * @see \AppserverIo\Collections\CollectionInterface::toArray()
      */
     public function toArray()
     {

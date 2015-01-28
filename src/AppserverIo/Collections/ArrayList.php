@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
@@ -28,10 +26,8 @@ use AppserverIo\Lang\NullPointerException;
 /**
  * This class is the implementation of a ArrayList.
  *
- * @category  Library
- * @package   Collections
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/collections
  * @link      http://www.appserver.io
@@ -47,12 +43,12 @@ class ArrayList extends AbstractCollection
     protected $count = 0;
 
     /**
-     * Standardconstructor that adds the array passed
-     * as parameter to the internal membervariable.
+     * Standard constructor that adds the array passed
+     * as parameter to the internal member variable.
      *
      * @param array $items An array to initialize the ArrayList
      *
-     * @return void
+     * @throws \AppserverIo\Lang\ClassCastException
      */
     public function __construct($items = null)
     {
@@ -78,7 +74,7 @@ class ArrayList extends AbstractCollection
      *
      * @param mixed $object The object that should be added to the ArrayList
      *
-     * @return \TechDivision\Collection\ArrayList The instance
+     * @return \AppserverIo\Collections\ArrayList The instance
      * @throws \AppserverIo\Lang\NullPointerException Is thrown it the passed object is NULL
      */
     public function add($object)
