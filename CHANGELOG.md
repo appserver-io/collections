@@ -1,3 +1,13 @@
+# Version 1.0.1
+
+## Bugfixes
+
+* Bugfix for un-initialized collections within multi threading contexts
+
+## Features
+
+* None
+
 # Version 1.0.0
 
 ## Bugfixes

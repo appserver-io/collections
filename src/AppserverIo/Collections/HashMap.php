@@ -49,6 +49,9 @@ class HashMap extends AbstractMap
      */
     public function __construct($items = array())
     {
+        // parent constructor to ensure property preset
+        parent::__construct();
+
         // check if NULL is passed, is yes, to nothing
         if (is_null($items)) {
             return;
