@@ -52,6 +52,10 @@ class ArrayList extends AbstractCollection
      */
     public function __construct($items = null)
     {
+        // parent constructor to ensure property preset
+        parent::__construct();
+        $this->count = 0;
+
         // check if NULL is passed, is yes, to nothing
         if (is_null($items)) {
             return;

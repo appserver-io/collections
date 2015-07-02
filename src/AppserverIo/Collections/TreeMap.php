@@ -60,6 +60,9 @@ class TreeMap extends AbstractMap implements SortedMapInterface
      */
     public function __construct(ComparatorInterface $comparator = null, $items = array())
     {
+        // parent constructor to ensure property preset
+        parent::__construct();
+
         // set the comparator
         $this->comparator = $comparator;
         // check if NULL is passed, is yes, to nothing
