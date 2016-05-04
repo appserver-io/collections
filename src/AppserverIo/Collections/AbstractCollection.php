@@ -96,7 +96,7 @@ abstract class AbstractCollection extends Object implements CollectionInterface,
         // check if a primitive datatype is passed
         if (is_integer($key) || is_string($key) || is_double($key) || is_bool($key)) {
             // return the value for the passed key, if it exists
-            if (array_key_exists($key, $this->items)) {
+            if (isset($this->items[$key])) {
                 return $this->items[$key];
             } else {
                 throw new IndexOutOfBoundsException('Index ' . $key . ' out of bounds');
@@ -118,7 +118,7 @@ abstract class AbstractCollection extends Object implements CollectionInterface,
                 throw new InvalidKeyException('Passed key has to be a primitive datatype or ' . 'has to implement the __toString() method');
             }
             // return the value for the passed key, if it exists
-            if (array_key_exists($newKey, $this->items)) {
+            if (isset($this->items[$newKey])) {
                 return $this->items[$newKey];
             } else {
                 throw new IndexOutOfBoundsException('Index ' . $newKey . ' out of bounds');
@@ -148,7 +148,7 @@ abstract class AbstractCollection extends Object implements CollectionInterface,
         // check if a primitive datatype is passed
         if (is_integer($key) || is_string($key) || is_double($key) || is_bool($key)) {
             // return TRUE if a value for the passed key exists, else FALSE
-            return array_key_exists($key, $this->items);
+            return isset($this->items[$key]);
         }
         // check if an object is passed
         if (is_object($key)) {
@@ -166,7 +166,7 @@ abstract class AbstractCollection extends Object implements CollectionInterface,
                 throw new InvalidKeyException('Passed key has to be a primitive datatype or ' . 'has to implement the __toString() method');
             }
             // return TRUE if a value for the passed key exists, else FALSE
-            return array_key_exists($newKey, $this->items);
+            return isset($this->items[$newKey]);
         }
         throw new InvalidKeyException('Passed key has to be a primitive datatype or ' . 'has to implement the __toString() method');
     }
@@ -239,7 +239,7 @@ abstract class AbstractCollection extends Object implements CollectionInterface,
         }
         // check if a primitive datatype is passed
         if (is_integer($key) || is_string($key) || is_double($key) || is_bool($key)) {
-            if (array_key_exists($key, $this->items)) {
+            if (isset($this->items[$key])) {
                 // remove the item
                 unset($this->items[$key]);
                 // return the instance
@@ -263,7 +263,7 @@ abstract class AbstractCollection extends Object implements CollectionInterface,
             } else {
                 throw new InvalidKeyException('Passed key has to be a primitive datatype or ' . 'has to implement the __toString() method');
             }
-            if (array_key_exists($newKey, $this->items)) {
+            if (isset($this->items[$newKey])) {
                 // remove the item
                 unset($this->items[$newKey]);
                 // returns the instance
