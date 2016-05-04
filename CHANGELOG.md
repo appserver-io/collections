@@ -1,3 +1,13 @@
+# Version 1.0.2
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Replace array_key_exsist() with isset() function where possible to improve performance
+
 # Version 1.0.1
 
 ## Bugfixes
