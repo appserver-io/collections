@@ -47,6 +47,14 @@ abstract class AbstractCollection extends Object implements CollectionInterface,
     protected $items = array();
 
     /**
+     * Default constructor which makes sure that our properties are preset properly
+     */
+    public function __construct()
+    {
+        $this->items = array();
+    }
+
+    /**
      * This method returns a new Iter object
      * needed by a foreach structure.
      *

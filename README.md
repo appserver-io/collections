@@ -1,6 +1,12 @@
 # PHP collection library
 
-[![Latest Stable Version](https://poser.pugx.org/appserver-io/collections/v/stable.png)](https://packagist.org/packages/appserver-io/collections) [![Total Downloads](https://poser.pugx.org/appserver-io/collections/downloads.png)](https://packagist.org/packages/appserver-io/collections) [![License](https://poser.pugx.org/appserver-io/collections/license.png)](https://packagist.org/packages/appserver-io/collections) [![Build Status](https://travis-ci.org/appserver-io/collections.png)](https://travis-ci.org/appserver-io/collections) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/appserver-io/collections/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/appserver-io/collections/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/appserver-io/collections/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/appserver-io/collections/?branch=master)
+
+[![Latest Stable Version](https://img.shields.io/packagist/v/appserver-io/collections.svg?style=flat-square)](https://packagist.org/packages/appserver-io/collections) 
+ [![Total Downloads](https://img.shields.io/packagist/dt/appserver-io/collections.svg?style=flat-square)](https://packagist.org/packages/appserver-io/collections)
+ [![License](https://img.shields.io/packagist/l/appserver-io/collections.svg?style=flat-square)](https://packagist.org/packages/appserver-io/collections)
+ [![Build Status](https://img.shields.io/travis/appserver-io/collections/master.svg?style=flat-square)](http://travis-ci.org/appserver-io/collections)
+ [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/appserver-io/collections/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/appserver-io/collections/?branch=master)
+ [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/appserver-io/collections/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/appserver-io/collections/?branch=master)
 
 ## Introduction
 
@@ -9,19 +15,11 @@ This package provides a generic collection library.
 The library is based on the SPL extension of PHP5 and uses the introduced iterators. The library
 also provides, beside the most used collection types, interfaces and exceptions.
 
-## Installation
+## Issues
 
-If you want to use the library with your application you can install it by adding
-
-```sh
-{
-    "require": {
-        "appserver-io/collections": "dev-master"
-    },
-}
-```
-
-to your ```composer.json``` and invoke ```composer update``` in your project.
+In order to bundle our efforts we would like to collect all issues regarding this package in [the main project repository's issue tracker](https://github.com/appserver-io/appserver/issues).
+Please reference the originating repository as the first element of the issue title e.g.:
+`[appserver-io/<ORIGINATING_REPO>] A issue I am having`
 
 ## Usage
 
@@ -154,6 +152,6 @@ foreach($map as $key => $item) {
 Found item with key 2 and value 13 Found item with key 1 and value 14 Found item with key 3 and value 15
 ```
 
-# External Links
+## External Links
 
 * Documentation at [appserver.io](http://docs.appserver.io)
