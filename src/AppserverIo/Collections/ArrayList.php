@@ -63,7 +63,7 @@ class ArrayList extends AbstractCollection
         // check if an array is passed
         if (is_array($items)) {
             // initialize the ArrayList with the values of the passed array
-            foreach ($items as $key => $item) {
+            foreach ($items as $item) {
                 $this->add($item);
             }
             return;
