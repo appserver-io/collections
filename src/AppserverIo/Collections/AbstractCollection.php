@@ -21,8 +21,8 @@
 namespace AppserverIo\Collections;
 
 use AppserverIo\Lang\Object;
-use AppserverIo\Lang\String;
-use AppserverIo\Lang\Float;
+use AppserverIo\Lang\Strng;
+use AppserverIo\Lang\Flt;
 use AppserverIo\Lang\Integer;
 use AppserverIo\Lang\Boolean;
 use AppserverIo\Lang\NullPointerException;
@@ -112,9 +112,9 @@ abstract class AbstractCollection extends Object implements CollectionInterface,
         }
         // check if an object is passed
         if (is_object($key)) {
-            if ($key instanceof String) {
+            if ($key instanceof Strng) {
                 $newKey = $key->stringValue();
-            } elseif ($key instanceof Float) {
+            } elseif ($key instanceof Flt) {
                 $newKey = $key->floatValue();
             } elseif ($key instanceof Integer) {
                 $newKey = $key->intValue();
@@ -160,9 +160,9 @@ abstract class AbstractCollection extends Object implements CollectionInterface,
         }
         // check if an object is passed
         if (is_object($key)) {
-            if ($key instanceof String) {
+            if ($key instanceof Strng) {
                 $newKey = $key->stringValue();
-            } elseif ($key instanceof Float) {
+            } elseif ($key instanceof Flt) {
                 $newKey = $key->floatValue();
             } elseif ($key instanceof Integer) {
                 $newKey = $key->intValue();
@@ -258,9 +258,9 @@ abstract class AbstractCollection extends Object implements CollectionInterface,
         }
         // check if an object is passed
         if (is_object($key)) {
-            if ($key instanceof String) {
+            if ($key instanceof Strng) {
                 $newKey = $key->stringValue();
-            } elseif ($key instanceof Float) {
+            } elseif ($key instanceof Flt) {
                 $newKey = $key->floatValue();
             } elseif ($key instanceof Integer) {
                 $newKey = $key->intValue();
