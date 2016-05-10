@@ -20,9 +20,9 @@
 
 namespace AppserverIo\Collections;
 
-use AppserverIo\Lang\String;
+use AppserverIo\Lang\Strng;
 use AppserverIo\Lang\Integer;
-use AppserverIo\Lang\Float;
+use AppserverIo\Lang\Flt;
 use AppserverIo\Lang\Boolean;
 use AppserverIo\Lang\ClassCastException;
 use AppserverIo\Lang\NullPointerException;
@@ -90,7 +90,7 @@ class TreeMap extends AbstractMap implements SortedMapInterface
      *
      * @return \AppserverIo\Collections\TreeMap
      * @throws \AppserverIo\Collections\InvalidKeyException Is thrown if the passed key is NOT an primitive datatype
-     * @throws \AppserverIo\Lang\NullPointerException Is thrown if the passed key is null or not a flat datatype like Integer, String, Double or Boolean
+     * @throws \AppserverIo\Lang\NullPointerException Is thrown if the passed key is null or not a flat datatype like Integer, Strng, Double or Boolean
      */
     public function add($key, $object)
     {
@@ -108,9 +108,9 @@ class TreeMap extends AbstractMap implements SortedMapInterface
         }
         // check if an object is passed
         if (is_object($key)) {
-            if ($key instanceof String) {
+            if ($key instanceof Strng) {
                 $newKey = $key->stringValue();
-            } elseif ($key instanceof Float) {
+            } elseif ($key instanceof Flt) {
                 $newKey = $key->floatValue();
             } elseif ($key instanceof Integer) {
                 $newKey = $key->intValue();
